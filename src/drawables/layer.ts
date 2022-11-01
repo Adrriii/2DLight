@@ -94,6 +94,9 @@ export class Layer extends Dynamic {
 				element.hovered = false;
 				element.onHoverStop();
 			}
+			
+			element.update();
+				
 			return null;
 		}, null);
 		return this;

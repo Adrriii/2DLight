@@ -74,4 +74,6 @@ export class Drawable extends Dynamic {
 	draw(): void {
 		this.setFillStyle(this.color);
 	}
+
+	update(): void {}
 }

@@ -40,10 +40,20 @@ export class Globals {
 	/**
 	 * The currently dragged element
 	 */
-	 static DRAGGED: Dynamic[] = [];
+	static DRAGGED: Dynamic[] = [];
 
 	/**
 	 * The start position of the drag
 	 */
-	 static DRAGPOS: Point | undefined = undefined;
+	static DRAGPOS: Point | undefined = undefined;
+
+	/**
+	 * The starting time of the application
+	 */
+	static STARTTIME: number;
+
+	/**
+	 * The current application time, updated every tick
+	 */
+	static TIME: number;
 }

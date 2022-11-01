@@ -2,6 +2,7 @@ import { Globals } from './globals.js';
 
 export class Light {
 
+	static get GLOBALS () { return Globals; };
 	static get LAYERS () { return Globals.LAYERS; };
 
 	/**
@@ -48,6 +49,8 @@ export class Light {
 		setInterval(instance["viewTick"], 16);
 		setInterval(instance["updateTick"], 16);
 
+		Globals.STARTTIME = Date.now();
+
 		Globals.READY = true;
 	}
 
@@ -73,6 +76,9 @@ export class Light {
 	 * Update loop
 	 */
 	static updateTick(): void {
+		// Update the application clock
+		Globals.TIME = Date.now() - Globals.STARTTIME;
+
 		// Unlock the hover event
 		Globals.HOVERED = false;
 
@@ -87,6 +93,11 @@ export class Light {
 		Globals.LAYERS.OVERLAY.update();
 		Globals.LAYERS.FOREGROUND.update();
 		Globals.LAYERS.BACKGROUND.update();
+
+		// If the click was not consumed, cancel
+		if(Globals.HOLD == 1) {
+			Globals.HOLD = 0;
+		}
 	
 		Globals.DRAGGED.forEach(el => el.whileDrag());
 	}
